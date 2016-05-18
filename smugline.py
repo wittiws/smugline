@@ -167,7 +167,7 @@ class SmugLine(object):
 
     def _get_md5_hashes_for_album(self, album):
         remote_images = self._get_remote_images(album, 'MD5Sum')
-        md5_sums = [x['MD5Sum'] for x in remote_images['Album']['Images']]
+        md5_sums = [x.get('MD5Sum', 'unknown') for x in remote_images['Album']['Images']]
         self.md5_sums[album['id']] = md5_sums
         return md5_sums
 
